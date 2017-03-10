@@ -58,7 +58,7 @@ GLOBAL_CONFIG = "/etc/git-review/git-review.conf"
 USER_CONFIG = os.path.join(CONFIGDIR, "git-review.conf")
 DEFAULTS = dict(scheme='ssh', hostname=False, port=None, project=False,
                 branch='master', remote="gerrit", rebase="1",
-                track="0", usepushurl="0")
+                track="0", usepushurl="0", compatible="0")
 
 _branch_name = None
 _has_color = None
@@ -1458,6 +1458,7 @@ def _main():
         parser.set_defaults(rebase=convert_bool(config['rebase']),
                             track=convert_bool(config['track']),
                             remote=None,
+                            compatible=convert_bool(config['compatible']),
                             usepushurl=convert_bool(config['usepushurl']))
     options = parser.parse_args()
 
